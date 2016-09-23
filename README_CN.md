@@ -3,7 +3,7 @@ Synopsis
 ```lua
     -- app/openwaf_init.lua
     -- construct a new object - twaf
-    local twaf_lib = require "lib.twaf.twaf"
+    local twaf_lib = require "lib.twaf.core"
     twaf = twaf_lib:new(twaf_config, twaf_logger)
     
     local access_order = twaf:get_init_config_param("access_order")
@@ -21,11 +21,12 @@ Synopsis
 Directives
 ================================
 * [new](#new)
-* [get_init_config_param](#get_init_config_param)
+* [ctx](#ctx)
 * [register_order_modules](#register_order_modules)
 * [register_modules](#register_modules)
-* [ctx](#ctx)
+* [get_default_config_param](#get_default_config_param)
 * [get_config_param](#get_config_param)
+* [get_modules_config_param](#get_modules_config_param)
 * [run](#run)
 
 new
