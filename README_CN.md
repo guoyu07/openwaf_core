@@ -31,23 +31,39 @@ Directives
 
 new
 ---
-**syntax:** *twaf = new(config, logger)*
+**syntax:** *twaf = new(config)*
 
-get_init_config_param
----------------------
-**syntax:** *twaf:get_init_config_param(key)*
+用于初始化新的对象，同时初始化配置
+
+ctx
+---
+**syntax:** *ctx = twaf:ctx()*
+
+ctx，用于存放当前请求的临时信息
 
 register_order_modules
 ----------------------
-**syntax:** *twaf:register_order_modules(phase_order)*
+**syntax:** *twaf:register_order_modules(phase_order， module_name, path)*
+
+用于注册需按顺序执行的模块
+
+例如：
+```
+    注册access阶段需按顺序执行的模块
+    local access_order = twaf:get_default_config_param("access_order")
+    for _, modules in pairs(access_order) do
+        local modules_name, path = next(modules)
+        twaf:register_order_modules("access", modules_name, path)
+    end
+```
 
 register_modules
 ----------------
 **syntax:** *twaf:register_modules(module_name, path)*
 
-ctx
----
-**syntax:** *ctx = twaf:ctx()*
+get_init_config_param
+---------------------
+**syntax:** *twaf:get_init_config_param(key)*
 
 get_config_param
 ----------------
